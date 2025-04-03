@@ -652,7 +652,8 @@ Ou digite SAIR para encerrar o atendimento.`);
 }
 
 client.on('qr', (qr) => {
-  qrcode.generate(qr, { small: true });
+  // Gera o QR code com um tamanho ajustado
+  qrcode.generate(qr, { small: true, margin: 1 }); // Você pode ajustar o valor de margin se necessário
 });
 
 client.on('ready', () => {
@@ -660,7 +661,7 @@ client.on('ready', () => {
 });
 
 client.on('message', (msg) => {
-  if (isUserLocked(msg.from)) {
+  if (isUser Locked(msg.from)) {
     return;
   }
   const conversation = getConversation(msg.from);
