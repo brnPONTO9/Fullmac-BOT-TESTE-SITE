@@ -651,8 +651,9 @@ Ou digite SAIR para encerrar o atendimento.`);
   }
 }
 
-const qrcode = require('qrcode-terminal');
+const QRCode = require('qrcode');
 
-client.on('qr', (qr) => {
-  qrcode.generate(qr, { small: true });
+client.on('qr', async (qr) => {
+  const url = await QRCode.toDataURL(qr);
+  console.log('Acesse este URL para ver o QR code:', url);
 });
