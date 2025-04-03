@@ -651,21 +651,8 @@ Ou digite SAIR para encerrar o atendimento.`);
   }
 }
 
+const qrcode = require('qrcode-terminal');
+
 client.on('qr', (qr) => {
-  // Gera o QR code com um tamanho ajustado
-  qrcode.generate(qr, { small: true, margin: 1 }); // Você pode ajustar o valor de margin se necessário
+  qrcode.generate(qr, { small: true });
 });
-
-client.on('ready', () => {
-  console.log('Cliente WhatsApp pronto!');
-});
-
-client.on('message', (msg) => {
-  if (isUser Locked(msg.from)) {
-    return;
-  }
-  const conversation = getConversation(msg.from);
-  processInput(msg.body, conversation, msg);
-});
-
-client.initialize();
